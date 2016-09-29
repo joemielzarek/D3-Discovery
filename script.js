@@ -1,7 +1,7 @@
 var   w = 700,
       h = 700;
 
-var circleWidth = 3;
+var circleWidth = 10;
 
 var palette = {
       "lightgray": "#819090",
@@ -24,13 +24,26 @@ var palette = {
       "yellowgreen": "#738A05"
   }
 
+var array = [0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14, 15];
+
 var nodes = [
       { name: "Parent"},
-      { name: "child1"},
-      { name: "child2", target: [0]},
-      { name: "child3", target: [0]},
-      { name: "child4", target: [1]},
-      { name: "child5", target: [0, 1, 2, 3]}
+      { name: "child1", target: array},
+      { name: "child2", target: array},
+      { name: "child3", target: array},
+      { name: "child4", target: array},
+      { name: "child5", target: array},
+      { name: "child6", target: array},
+      { name: "child7", target: array},
+      { name: "child8", target: array},
+      { name: "child9", target: array},
+      { name: "child10", target: array},
+      { name: "child11", target: array},
+      { name: "child12", target: array},
+      { name: "child13", target: array},
+      { name: "child14", target: array},
+      { name: "child15", target: array}
+
 ];
 
 var links = [];
@@ -54,13 +67,13 @@ var myChart = d3.select('#chart')
 var force = d3.layout.force()
 	.nodes(nodes)
 	.links([])
-	.gravity(.3)
-	.charge(-1000)
+	.gravity(.4)
+	.charge(-2000)
 	.size([w, h])
 
 var link = myChart.selectAll('line')
 	.data(links).enter().append('line')
-	.attr('stroke', palette.gray)
+	.attr('stroke', palette.lightgray)
 
 var node = myChart.selectAll('circle')
 	.data(nodes).enter()
