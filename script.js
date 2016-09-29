@@ -64,6 +64,7 @@ var myChart = d3.select('#chart')
 		.attr('width', w)
 		.attr('height', h)
 
+
 var force = d3.layout.force()
 	.nodes(nodes)
 	.links([])
@@ -78,7 +79,19 @@ var link = myChart.selectAll('line')
 var node = myChart.selectAll('circle')
 	.data(nodes).enter()
 	.append('g')
-	.call(force.drag);
+	.call(force.drag)
+  .on('mouseover', function(d) {
+
+      d3.select(this)
+          .style('opacity', .7)
+          .style('fill', 'yellow')
+  })
+
+  .on('mouseout', function(d) {
+      d3.select(this)
+          .style('opacity', 1)
+          .style('fill', tempColor)
+  });
 
 node.append('circle')
 	.attr('cx', function(d) { return d.x; })
